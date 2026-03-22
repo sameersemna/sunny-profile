@@ -2,7 +2,8 @@
 
 [![Go Version](https://img.shields.io/badge/go-1.22+-00ADD8?logo=go)](https://go.dev/)
 ![Platform](https://img.shields.io/badge/platform-linux-informational)
-![Build](https://img.shields.io/badge/build-manual-blue)
+[![CI](https://github.com/sameersemna/sunny-profile/actions/workflows/ci.yml/badge.svg)](https://github.com/sameersemna/sunny-profile/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 ![Status](https://img.shields.io/badge/status-active-success)
 
 Sunny Profile is a local-first Go project that does two things:
@@ -30,10 +31,38 @@ make build
 
 Say "Hey Sunny" and then speak your query.
 
+## Demo
+
+Expected end-to-end interaction:
+
+```text
+Sunny is online. Say hey sunny to activate me.
+Wake word detected: "hey sunny"
+Heard: "what should I focus on this week"
+Sunny: "Focus on customer discovery calls and shipping one measurable onboarding improvement."
+```
+
+To record an animated terminal demo:
+
+```bash
+# install once
+sudo apt install -y asciinema
+
+# record
+asciinema rec docs/sunny-audio-demo.cast
+
+# then run a short session in another terminal
+./bin/sunny-audio --tts edge --brain http://127.0.0.1:8765 --whisper-host promaxgb10-6116
+```
+
+Tip: convert the cast to GIF/MP4 with your preferred tool and embed it in this section.
+
 ## Architecture
 
 ```mermaid
 flowchart TD
+		X[Sunny Profile System]
+
 		subgraph Ingestion[Knowledge Ingestion Path]
 				A[profile.yaml sources] --> B[sunny-profile ingest]
 				B --> C[Crawler and Pipeline]
@@ -51,6 +80,9 @@ flowchart TD
 				R --> S[TTS engine edge or piper]
 				S --> T[OS default audio output]
 		end
+
+		X --> A
+		F --> M
 ```
 
 ## Repository Layout

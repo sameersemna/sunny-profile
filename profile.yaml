@@ -1,0 +1,42 @@
+# ─────────────────────────────────────────────────────────────────
+# Sunny Profile — add your personal URLs here
+# Run:  sunny-profile ingest --profile profile.yaml
+# ─────────────────────────────────────────────────────────────────
+
+embed_url:   "http://promaxgb10-6116:9107"
+embed_model: "nomic-embed-text"
+db_path:     "~/.config/sunny/knowledge.db"
+
+profile:
+  sources:
+
+    # ── Your website / portfolio ──────────────────────────────
+    - url:       "https://yourwebsite.com"
+      label:     "website"
+      max_depth: 2        # also follow links on same domain
+
+    # ── Your blog / writing ───────────────────────────────────
+    - url:       "https://yourblog.com"
+      label:     "blog"
+      max_depth: 1
+
+    # ── GitHub — uses GitHub API for structured data ──────────
+    - url:       "https://github.com/yourusername"
+      label:     "github"
+      max_depth: 0
+
+    # ── LinkedIn (public profile page only) ───────────────────
+    # Note: LinkedIn blocks crawlers; paste text manually below
+    - url:       "https://linkedin.com/in/yourprofile"
+      label:     "linkedin"
+      max_depth: 0
+
+    # ── Your startup website ──────────────────────────────────
+    - url:       "https://yourstartup.com"
+      label:     "startup"
+      max_depth: 2
+
+    # ── Any other URLs: Medium, DEV.to, talks, papers, etc ───
+    # - url:     "https://medium.com/@yourhandle"
+    #   label:   "writing"
+    #   max_depth: 1
